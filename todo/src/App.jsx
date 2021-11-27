@@ -33,6 +33,13 @@ export function App () {
         setTodos(newTodos);
     }
 
+    const handleUpdateTask = (id, newTask) => {
+        const newTodos = [...todos];
+        const todo = newTodos.find((todo) => todo.id === id);
+        todo.task = newTask
+        setTodos(newTodos);
+    }
+
     const toggleTodo = (id) => {
         const newTodos = [...todos];
         const todo = newTodos.find((todo) => todo.id === id);
@@ -54,7 +61,7 @@ export function App () {
     return (
         <Fragment>      
             <Header />
-            <TodoList todos={todos} toggleTodo={toggleTodo} handleDeleteTask={handleDeleteTask}/>
+            <TodoList todos={todos} toggleTodo={toggleTodo} handleDeleteTask={handleDeleteTask} handleUpdateTask={handleUpdateTask} />
             <input ref={todoTaskRef} type="text" placeholder="New Task" />
             <button onClick={handleTodoAdd}>➕</button>
             <button onClick={handleClearAll}>🗑</button>
