@@ -10,7 +10,6 @@ export function TodoItem ({todo,  toggleTodo}) {
     return(
         <li>
             <input type="checkbox" checked={completed} onChange={handleTodoClick} />
-            {id}
             {task}
         </li>
     )
