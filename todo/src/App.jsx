@@ -9,6 +9,11 @@ export function App () {
 
     const todoTaskRef = useRef();
 
+    const handleClearAll = () => {
+        const newTodos = todos.filter((todo) => !todo.completed);
+        setTodos(newTodos);
+    }
+
     const toggleTodo = (id) => {
         const newTodos = [...todos];
         const todo = newTodos.find((todo) => todo.id == id);
@@ -34,6 +39,7 @@ export function App () {
             <input ref={todoTaskRef} type="text" placeholder="New Task" />
             <button onClick={handleTodoAdd}>➕</button>
             <button>🗑</button>
+            <div>{todos.filter((todo) => !todo.completed).length} task to complet</div>
         </Fragment>
     )
 }
