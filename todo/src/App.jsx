@@ -12,9 +12,8 @@ export function App () {
         const task = todoTaskRef.current.value;
         if (task === '') return;
 
-        // const newId = todos.length;
-        const newId = todos.map((e) => e.id).sort((a, b) => a + b)[todos.length - 1] + 1;
-
+        // const newId = todos.map((e) => e.id).sort((a, b) => a + b)[todos.length - 1] + 1;
+        const newId = todos.length;
         const prevTodos = {id: newId, task: task, completed: false};
 
         setTodos([...todos,prevTodos])
