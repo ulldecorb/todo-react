@@ -6,8 +6,7 @@ export function TodoItem ({todo}) {
 
     return(
         <li>
-            {/* <input type="checkbox" /> */}
-            {/* {datata.id} */}
+            <input type="checkbox" />
             {id}
             {task}
         </li>
