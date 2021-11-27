@@ -1,13 +1,26 @@
-import React, { Fragment, useState, useRef } from 'react';
+import React, { Fragment, useState, useRef, useEffect } from 'react';
 import {v4 as newId} from 'uuid';
 import { Header } from './components/Header/Header';
 import { TodoList } from './components/TodoList/TodoList';
 import List from './constants/List';
 
+const KEY = "todoApp.todos";
+
 export function App () {
     const [todos, setTodos] = useState(List);
 
     const todoTaskRef = useRef();
+
+    useEffect(() => {
+        const storedTodos = JSON.parse(localStorage.getItem(KEY));
+        if (storedTodos) {
+            setTodos(storedTodos)
+        }
+    } , [])
+
+    useEffect(() => {
+        localStorage.setItem(KEY, JSON.stringify(todos))
+    }, [todos])
 
     const handleClearAll = () => {
         const newTodos = todos.filter((todo) => !todo.completed);
@@ -16,7 +29,7 @@ export function App () {
 
     const toggleTodo = (id) => {
         const newTodos = [...todos];
-        const todo = newTodos.find((todo) => todo.id == id);
+        const todo = newTodos.find((todo) => todo.id === id);
         todo.completed = !todo.completed;
         setTodos(newTodos);
     }
@@ -38,7 +51,7 @@ export function App () {
             <TodoList todos={todos} toggleTodo={toggleTodo} />
             <input ref={todoTaskRef} type="text" placeholder="New Task" />
             <button onClick={handleTodoAdd}>➕</button>
-            <button>🗑</button>
+            <button onClick={handleClearAll}>🗑</button>
             <div>{todos.filter((todo) => !todo.completed).length} task to complet</div>
         </Fragment>
     )
