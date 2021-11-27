@@ -1,13 +1,16 @@
-import React from 'react';
+import React, { Fragment, useState } from 'react';
 import { Header } from './components/Header/Header';
 import { TodoList } from './components/TodoList/TodoList';
 import List from './constants/List';
 
 export function App () {
-    return (
-        <>
+    const [todos, setTodos] = useState(List);
+    return (      
+        <Fragment>      
             <Header />
-            <TodoList todos={List} />
-        </>
+            <TodoList todos={todos} />
+            <button>➕</button>
+            <button>🗑</button>
+        </Fragment>
     )
 }

@@ -1,17 +1,17 @@
 let List = [
     {
         id: 0,
-        title: 'Create Todo React App',
+        task: 'Create Todo React App',
         completed: true
     },
     {
         id: 1,
-        title: 'Test App',
+        task: 'Test App',
         completed: false
     },
     {
         id: 2,
-        title: 'Enjoy afternoon',
+        task: 'Enjoy afternoon',
         completed: false
     },
 ]
